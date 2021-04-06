@@ -64,7 +64,7 @@ if has("gui_running")				"如果在 GUI 环境下运行则设置下面语句
 	set vb t_vb=					" 禁用响铃提醒
 	au GuiEnter * simalt ~x			"自动最大化
 	au GuiEnter * set t_vb=			"没有这一句屏幕就会闪屏
-	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 210)  "自动透明
+	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 250)  "自动透明
 endif
 syntax enable
 syntax on					"语法支持
