@@ -1,0 +1,75 @@
+c:
+	c:CTagsClass
+	d:CTagsDefinedName
+	e:CTagsEnumerationValue
+	f:CTagsFunction
+	g:CTagsEnumeratorName
+	k:CTagsConstant
+	l:CTagsLocalVariable
+	m:CTagsMember
+	n:CTagsNamespace
+	p:CTagsFunction
+	s:CTagsStructure
+	t:CTagsType
+	u:CTagsUnion
+	v:CTagsGlobalVariable
+	x:CTagsExtern
+	F:CTagsFile
+c++:
+	c:CTagsClass
+	d:CTagsDefinedName
+	e:CTagsEnumerationValue
+	f:CTagsFunction
+	g:CTagsEnumerationName
+	k:CTagsConstant
+	l:CTagsLocalVariable
+	m:CTagsMember
+	n:CTagsNamespace
+	p:CTagsFunction
+	s:CTagsStructure
+	t:CTagsType
+	u:CTagsUnion
+	v:CTagsGlobalVariable
+	x:CTagsExtern
+	F:CTagsFile
+c#:
+	c:CTagsClass
+	d:CTagsDefinedName
+	e:CTagsEnumerationValue
+	E:CTagsEvent
+	f:CTagsField
+	g:CTagsEnumerationName
+	i:CTagsInterface
+	l:CTagsLocalVariable
+	m:CTagsMethod
+	n:CTagsNamespace
+	p:CTagsProperty
+	s:CTagsStructure
+	t:CTagsType
+java:
+	c:CTagsClass
+	e:CTagsEnumerationValue
+	f:CTagsField
+	g:CTagsEnumeratorName
+	i:CTagsInterface
+	l:CTagsLocalVariable
+	m:CTagsMethod
+	p:CTagsPackage
+javascript:
+	f:CTagsFunction
+	c:CTagsClass
+	m:CTagsMethod
+	p:CTagsProperty
+	v:CTagsGlobalVariable
+
+lua:
+	f:CTagsFunction
+
+python:
+	c:CTagsClass
+	f:CTagsFunction
+	i:CTagsImport
+	m:CTagsMember
+	v:CTagsGlobalVariable
+
+# vim: ff=unix:noet

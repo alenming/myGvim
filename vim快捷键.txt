@@ -1,0 +1,71 @@
+let mapleader = ','
+
+设置根目录 exec 'cd ' . fnameescape('E:\MyCode\MingServer')
+
+Nerdtree
+o		buffer打开	
+t 		tab打开 	
+p 		返回上层目录	
+P 		返回根目录
+ctrl+w+w 光标在左右窗口切换			ctrl+w+r 切换当前窗口左右布局
+
+,+n 隐藏显示目录树
+,+to	关闭其它tab
+,+tc	关闭当前tab
+,+tp	关闭前一个tab
+,+tn	关闭后一个tab
+,+ts	查看所有tab
+
+ctrlP
+,+f 最近打开的文件搜索文件
+,+p 当前项目路径下搜索所有的文件
+,+b 打开当前其它打开的buffer列表
+,+d 切换根目录,没什么用
+,+rr 搜索光标所在单词的函数
+ctrl + j/k 进行上下选择
+ctrl + x 在当前窗口水平分屏打开文件
+ctrl + v 同上, 垂直分屏
+ctrl + t 在tab中打开
+	
+https://hub.fastgit.org/BurntSushi/ripgrep
+
+https://hub.fastgit.org/BurntSushi/ripgrep/releases
+vim-airline
+" 切换 buffer
+<tab>
+:bp<CR>  ctrl+<-  ->
+:bn<CR>
+:bd alt+d	 "关闭当前 buffer  
+   
+,+buffer上的数字 切换到这个buffer
+
+nerdcommenter setting
+"<leader>cc          "注释
+"<leader>cu          "取消注释
+"<leader>c <space>   "注释与反注
+
+za 当前代码折叠
+zc 全所折叠
+zn zx ?????全部打开
+
+F1 跳转 F2tagbar F3 tag跳到定义 F4 ctags返回上层 F5(,n) YCM声明实现自由跳  	F8自定义文件头 F11生成ctags F12生成cscope
+alt+m 当前文件所有方法  alt+n 当前所有buffer的方法  
+,f 打开的buffer ,p 当前工作目录 ,b 当前所有的buffer列表
+,sf leaderF所有命令 
+gg 使当前光标跳转到文件的第一行
+G 使当前光标跳转到文件的最后一行
+494G 跳转到指定行号(494, Go!)
+%	跳转到配对的括号去
+[[	跳转到代码块的开头去(但要求代码块中'{'必须单独占一行)
+
+
+/pattern: 从光标开始处向文件尾搜索pattern
+?pattern: 从光标开始处向文件首搜索pattern
+n: 在同一方向重复上一次搜索命令
+N: 在反方向上重复上一次搜索命令
+:s/p1/p2/g: 将当前行中所有p1均用p2替代
+:n1,n2s/p1/p2/g: 将第n1至n2行中所有p1均用p2替代
+:g/p1/s//p2/g: 将文件中所有p1均用p2替换
+
+
+CocInstall coc-snippets
