@@ -64,7 +64,7 @@ if has("gui_running")				"如果在 GUI 环境下运行则设置下面语句
 	set vb t_vb=					" 禁用响铃提醒
 	au GuiEnter * simalt ~x			"自动最大化
 	au GuiEnter * set t_vb=			"没有这一句屏幕就会闪屏
-	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 250)  "自动透明
+	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 240)  "自动透明
 endif
 syntax enable
 syntax on					"语法支持
@@ -174,7 +174,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	" let Tlist_Exit_OnlyWindow		 = 1			 " 如果Taglist窗口是最后一个窗口则退出Vim
 	" let Tlist_Use_Right_Window	 = 1			 " 在右侧窗口中显示
 	" let Tlist_File_Fold_Auto_Close = 1			 " 自动折叠
-	" "let Tlist_Sort_Type = "name"					  " items in tags sorted by name
+	" let Tlist_Sort_Type = "name"					  " items in tags sorted by name
 " =================================nerdcommenter settings 注释插件==================================
 	"<leader>cc注释  <leader>cu  取消注释  <leader>c <space>   "注释与反注释
 	let g:NERDSpaceDelims			 = 1									" 在注释符号后加一个空格
@@ -227,7 +227,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	let g:Lf_WildIgnore = {
 				\ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
 				\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.opensdf', '*.taghl',
-				\ '*.dll','*.lib','*.zip','*.sdf','*.files','*.out','*.vcxproj','*.rc','*.sln', 'tags', '*.txt']}
+				\ '*.dll','*.lib','*.zip','*.sdf','*.files','*.out','*.vcxproj','*.rc','*.sln', 'tags', '*.suo']}
 " ================================= vim-airline状态栏的配置 ==================================
 	let g:airline_theme= "simple"										"vim-airline主题
 	let g:airline_powerline_fonts = 1									"这个是安装字体后 必须设置此项"
@@ -249,7 +249,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	"let g:airline_section_a = '%mode'
 	let g:airline_section_b = '%{strftime("%c")}'
 	"let g:airline_section_c = '%filetype'
-	let g:airline_section_x = '这是一个NB的编辑器'
+	" let g:airline_section_x = '这是一个NB的编辑器'
 	let g:airline_section_y = '明: %{bufnr("%")}'
 	"let g:airline_section_z = '%l','%c'
 
@@ -334,7 +334,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	autocmd StdinReadPre * let s:std_in=1
 	" 打开vim时自动打开NERDTree
 	" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+	" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 	" 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 	let NERDTreeAutoCenter=1
@@ -439,7 +439,7 @@ nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
 nmap	 <silent>		gy		  <Plug>(coc-type-definition)
 nmap	 <silent>		gr		  <Plug>(coc-references-used)
 nmap	 <silent>		gu		  <Plug>(coc-references)
-nmap	   <silent>		  K			:call CocAction("doHover")<cr>
+nmap	 <silent>		K		  :call CocAction("doHover")<cr>
 nmap	 <silent>		<c-e>	  :<c-u>CocList diagnostics<cr>
 " nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
 "使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
