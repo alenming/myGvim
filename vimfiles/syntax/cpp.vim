@@ -120,7 +120,7 @@ hi STD  guifg=#FF0000
 syn keyword	WINT_TYPE	WORD DWORD BYTE byte VOID BOOL LONG LONGLONG
 hi WINT_TYPE  guifg=#3370CC
 
-syn keyword my_function ZeroMemory CopyMemory memcpy GetTableUserItem SendTableData SendLookonData ASSERT
+syn keyword my_function ZeroMemory CopyMemory memcpy GetTableUserItem SendTableData SendLookonData ASSERT assert
 hi my_function  guifg=#66FF00
 
 syn keyword my_class IServerUserItem ITableUserAction ITableFrameSink TEA_POWER_CONFIG tagGameServiceOption ITableFrame IUnknownEx CMD_GR_Create_Private
