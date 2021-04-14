@@ -16,7 +16,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'honza/vim-snippets'				"快速生成代码块
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Plug 'kevinoid/vim-jsonc'
 " Plug 'vim-scripts/taglist.vim'
 Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
@@ -64,7 +64,7 @@ if has("gui_running")				"如果在 GUI 环境下运行则设置下面语句
 	set vb t_vb=					" 禁用响铃提醒
 	au GuiEnter * simalt ~x			"自动最大化
 	au GuiEnter * set t_vb=			"没有这一句屏幕就会闪屏
-	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 240)  "自动透明
+	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 250)  "自动透明
 endif
 syntax enable
 syntax on					"语法支持
@@ -96,6 +96,8 @@ set nowrap					" 指定不折行。如果一行太长，超过屏幕宽度，则
 set foldenable				" 允许折叠
 set foldmethod=indent		" 代码折叠, 命令 za  set nofoldenabl 关闭代码折叠
 set foldlevel=100			" 启动vim时不要自动折叠代
+highlight Folded     guifg=#333333
+highlight FoldColumn guifg=#2d2d2d
 set hlsearch				" 检索时高亮显示匹配项
 set incsearch				" 搜索逐字符高亮
 set magic					" 设置魔术
@@ -151,9 +153,9 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	"枚举类名
 	hi CTagsEnumeratorName guifg=#ffff33 gui=none
 	"枚举子项"
-	hi CTagsEnumerationValue guifg=#BD63C5	gui=none
+	hi CTagsEnumerationValue guifg=#F92672	gui=none
 	"宏定义"
-	hi CTagsDefinedName guifg=#BD63C5	gui=none
+	hi CTagsDefinedName guifg=#F92672	gui=none
 
 " =================================彩虹括号配置==================================
 	au VimEnter * RainbowParenthesesToggle
@@ -370,92 +372,85 @@ nnoremap <F3> <C-]>
 "跳回之前的位置"
 nnoremap <F4> <C-T>
 " =================================my setting====================================================
-" let g:ycm_global_ycm_extra_conf =$VIM . '\vimfiles\mingplugin\YouCompleteMe\third_party\ycmd\.ycm_extra_conf.py'
-"
-" let g:ycm_confirm_extra_conf = 0						"0为关闭载入配置文件提示
-" let g:ycm_show_diagnostics_ui = 1						"不做语法检查
-" let g:ycm_seed_identifiers_with_syntax = 1				" 语法关键字补全
-" let g:ycm_collect_identifiers_from_tags_files= 1		" 开启 YCM 基于标签引擎
-" let g:ycm_cache_omnifunc=0								" 禁止缓存匹配项，每次都重新生成匹配项
-" let g:ycm_add_preview_to_completeopt = 0				" 关闭补全预览
-"
-"
-" let g:ycm_goto_buffer_command = 'same-buffer' " 跳转打开
-" let g:ycm_min_num_identifier_candidate_chars = 2
-" let g:ycm_min_num_of_chars_for_completion = 1					"触发补全字数
-"
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1	 "注释和字符串中的文字也会被收入补全
-" let g:ycm_complete_in_strings=1
-" let g:ycm_complete_in_comments=1
-"
-" let g:ycm_key_invoke_completion = '<A-.>'
+let g:ycm_global_ycm_extra_conf =$VIM . '\vimfiles\mingplugin\YouCompleteMe\third_party\ycmd\.ycm_extra_conf.py'
+
+let g:ycm_confirm_extra_conf = 0						"0为关闭载入配置文件提示
+let g:ycm_show_diagnostics_ui = 1						"不做语法检查
+let g:ycm_seed_identifiers_with_syntax = 1				" 语法关键字补全
+let g:ycm_collect_identifiers_from_tags_files= 1		" 开启 YCM 基于标签引擎
+let g:ycm_cache_omnifunc=0								" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_add_preview_to_completeopt = 0				" 关闭补全预览
+
+
+let g:ycm_goto_buffer_command = 'same-buffer' " 跳转打开
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_min_num_of_chars_for_completion = 1					"触发补全字数
+
+let g:ycm_collect_identifiers_from_comments_and_strings = 1	 "注释和字符串中的文字也会被收入补全
+let g:ycm_complete_in_strings=1
+let g:ycm_complete_in_comments=1
+let g:ycm_max_num_candidates = 15							"提示的数量
+let g:ycm_key_invoke_completion = '<A-.>'
 " let g:ycm_max_num_candidates_to_detail = 10
 " let g:ycm_auto_hover = ' '	"CursorHold							"把这货改一下,他才不会弹出那个预览
-"
-"关闭选择补全时上边弹出窗口
-"set completeopt=menu,menuone
+
+" 关闭选择补全时上边弹出窗口
+set completeopt=menu
 " set completeopt+=popup
 
 " 补全内容不以分割子窗口形式出现，只显示补全列表
-" set completeopt-=preview
-"
-" let g:ycm_error_symbol = 'x'
-" let g:ycm_warning_symbol = '!'
-" let g:ycm_key_list_select_completion=['<Tab>']
-" let g:ycm_key_list_previous_completion = ['<Up>']
+set completeopt-=preview
 
-"
-" let g:ycm_semantic_triggers =  {
-"               \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
-"               \ 'cs,lua,javascript': ['re!\w{1}'],
-"               \ }
-" let g:ycm_filetype_whitelist = {
-"               \ "c":1,
-"               \ "cpp":1,
-"               \ "objc":1,
-"               \ }
-"导航定义和声明
-"nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-"nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+let g:ycm_error_symbol = 'x'
+let g:ycm_warning_symbol = '!'
+let g:ycm_key_list_select_completion=['<Tab>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 
-" nnoremap <A-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nnoremap <F5> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nnoremap <F6> :YcmCompleter GoToDeclaration<CR>
-" nnoremap <F7> :YcmCompleter GoToDefinition<CR>
-"nnoremap <F7> :YcmCompleter GoToReferences<CR>
 
-"highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
-"highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+let g:ycm_semantic_triggers =  {
+			  \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+			  \ 'cs,lua,javascript': ['re!\w{1}'],
+			  \ }
+let g:ycm_filetype_whitelist = {
+			  \ "c":1,
+			  \ "cpp":1,
+			  \ "objc":1,
+			  \ }
+" 导航定义和声明
+
+nnoremap <A-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F5> :YcmCompleter GoToReferences<CR>
+
 
 " =================================coc.nvm settings====================================================
 let g:coc_data_home = '$VIM/coc'
-let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight', 'coc-clangd']
+let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight']
 autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
-
-nmap	 <silent>		<F7>	  <Plug>(coc-rename)
-nnoremap <silent><expr> <F9>	  get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
-nnoremap <silent>		<F10>	  :silent CocRestart<cr>
-nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
-nmap	 <silent>		gy		  <Plug>(coc-type-definition)
-nmap	 <silent>		gr		  <Plug>(coc-references-used)
-nmap	 <silent>		gu		  <Plug>(coc-references)
-nmap	 <silent>		K		  :call CocAction("doHover")<cr>
-nmap	 <silent>		<c-e>	  :<c-u>CocList diagnostics<cr>
-" nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
-"使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
-inoremap <silent><expr> <TAB>
-	\ pumvisible() ? coc#_select_confirm() :
-	\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
-let g:coc_snippet_next = '<tab>'"
-
+"
+" nmap	 <silent>		<F7>	  <Plug>(coc-rename)
+" nnoremap <silent><expr> <F9>	  get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
+" nnoremap <silent>		<F10>	  :silent CocRestart<cr>
+" nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
+" nmap	 <silent>		gy		  <Plug>(coc-type-definition)
+" nmap	 <silent>		gr		  <Plug>(coc-references-used)
+" nmap	 <silent>		gu		  <Plug>(coc-references)
+" nmap	 <silent>		K		  :call CocAction("doHover")<cr>
+" nmap	 <silent>		<c-e>	  :<c-u>CocList diagnostics<cr>
+" " nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
+" "使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
+" inoremap <silent><expr> <TAB>
+"     \ pumvisible() ? coc#_select_confirm() :
+"     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"     \ <SID>check_back_space() ? "\<TAB>" :
+"     \ coc#refresh()
+" function! s:check_back_space() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
+" let g:coc_snippet_next = '<tab>'"
+"
 
 " exec 'cd ' . fnameescape('F:\WorkCode\游戏组件\扎股子')
-exec 'cd ' . fnameescape('F:\WorkCodeMj\游戏组件\惠州庄麻将')
-"exec 'cd ' . fnameescape('F:\Code\Test')
+" exec 'cd ' . fnameescape('F:\WorkCodeMj\游戏组件\惠州庄麻将')
+exec 'cd ' . fnameescape('C:\Test')
