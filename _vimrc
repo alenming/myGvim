@@ -233,7 +233,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 				\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.opensdf', '*.taghl',
 				\ '*.dll','*.lib','*.zip','*.sdf','*.files','*.out','*.vcxproj','*.rc','*.sln', 'tags', '*.suo']}
 " ================================= vim-airline状态栏的配置 ==================================
-	let g:airline_theme= "dark"										"vim-airline主题
+	let g:airline_theme= "simple"										"vim-airline主题
 	let g:airline_powerline_fonts = 1									"这个是安装字体后 必须设置此项"
 	let g:airline#extensions#tabline#enabled =1							"顶部tab显示"
 	let g:airline#extensions#buffline#enabled = 1						"打开功能
