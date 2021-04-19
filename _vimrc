@@ -13,7 +13,7 @@ Plug 'vim-scripts/a.vim'
 Plug 'Yggdroot/LeaderF'
 Plug 'preservim/tagbar'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'honza/vim-snippets'				"快速生成代码块
+" Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe'
@@ -64,7 +64,7 @@ if has("gui_running")				"如果在 GUI 环境下运行则设置下面语句
 	set vb t_vb=					" 禁用响铃提醒
 	au GuiEnter * simalt ~x			"自动最大化
 	au GuiEnter * set t_vb=			"没有这一句屏幕就会闪屏
-	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 240)  "自动透明
+	au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 230)  "自动透明
 endif
 syntax enable
 syntax on					"语法支持
@@ -76,8 +76,7 @@ set pythonthreedll=python38.dll
 set nocompatible			" 无视VI,全看VIM
 set cindent					" C风格缩进
 "set autoindent				" 自动缩进
-set smartindent				" 自动缩进
-set si						" 智能缩进
+set smartindent				" 智能缩进
 set ch=1					" 命令行于状态行
 set wildmenu				" 命令行补全以增强模式运行
 set bs=2					" 在insert模式下用退格键删除
@@ -96,7 +95,7 @@ set nowrap					" 指定不折行。如果一行太长，超过屏幕宽度，则
 set foldenable				" 允许折叠
 set foldmethod=indent		" 代码折叠, 命令 za  set nofoldenabl 关闭代码折叠
 set foldlevel=100			" 启动vim时不要自动折叠代
-highlight Folded     guifg=#333333
+highlight Folded	 guifg=#333333
 highlight FoldColumn guifg=#2d2d2d
 set hlsearch				" 检索时高亮显示匹配项
 set incsearch				" 搜索逐字符高亮
@@ -126,6 +125,9 @@ let mapleader = ','
 
 nmap J j
 nmap K k
+"行首行尾
+"nmap <c-a>  ^
+"nmap <c-e>  $
 " nmap H h
 " nmap L l
 nmap zc za
@@ -438,13 +440,13 @@ autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
 " " nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
 " "使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
 " inoremap <silent><expr> <TAB>
-"     \ pumvisible() ? coc#_select_confirm() :
-"     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"     \ <SID>check_back_space() ? "\<TAB>" :
-"     \ coc#refresh()
+"	  \ pumvisible() ? coc#_select_confirm() :
+"	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"	  \ <SID>check_back_space() ? "\<TAB>" :
+"	  \ coc#refresh()
 " function! s:check_back_space() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~# '\s'
+"	  let col = col('.') - 1
+"	  return !col || getline('.')[col - 1]	=~# '\s'
 " endfunction
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
 " let g:coc_snippet_next = '<tab>'"

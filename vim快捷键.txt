@@ -1,6 +1,14 @@
-let mapleader = ','
+﻿let mapleader = ','
 
 设置根目录 exec 'cd ' . fnameescape('E:\MyCode\MingServer')
+
+hi Normal guibg=#c7edcc guifg=Black  
+hi LineNr guibg=#003366 guifg=#99ccff ctermbg=7777 ctermfg=blue  
+set cursorline  
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=#66cc99 guifg=black  
+第一行的hi Normal中guibg是设置编辑区的显示背景色，guifg是设置前景色，即文字色。（注：guifg、guibg是用在gvim下，而控制台 cmd命令窗口下运行的vim则是用ctermbg、ctermfg，其它也是这样）
+第二行lineNr是设置行号区的色彩（同样bg是指背景色，fg是指前景色）。
+第三，四行是设置当前行的色彩，即光标所在行
 
 Nerdtree
 o		buffer打开	
@@ -57,9 +65,11 @@ N: 在反方向上重复上一次搜索命令
 :n1,n2s/p1/p2/g: 将第n1至n2行中所有p1均用p2替代
 :g/p1/s//p2/g: 将文件中所有p1均用p2替换
 
-
+^行首 $行尾
 删除一个单词  diw
 x 删除当前字符
 D 删除到行尾
 A行尾插入-I行首插入
 ddp与下一行交换位置
+bcw → 替换光标所在位置的一个单词
+diw 删除一个单词
