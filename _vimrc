@@ -19,9 +19,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe'
 " Plug 'kevinoid/vim-jsonc'
 " Plug 'vim-scripts/taglist.vim'
-Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-" Plug 'voidkiss/folaterm'
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -47,7 +45,6 @@ source $VIMRUNTIME/delmenu.vim		"导入删除菜单脚本，删除乱码的菜�
 source $VIMRUNTIME/menu.vim			"导入正常的菜单脚本
 language chinese
 language messages zh_CN.utf-8		"设置提示信息语言
-
 "set updatetime=					"文件修改显示刷新时间
 
 if (has("win32"))
@@ -366,6 +363,7 @@ function Do_Tag()
 		endif
 	endif
 	if(executable('ctags'))
+		" silent! execute "!ctags -R --languages=lua --fields=+iaS --extra=+q  --lua-kinds=+p ."
 		silent! execute "!ctags -R --languages=c++,c --fields=+iaS --extra=+q  --c++-kinds=+p ."
 	endif
 endf
@@ -388,8 +386,8 @@ let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_min_num_of_chars_for_completion = 1					"触发补全字数
 
 let g:ycm_collect_identifiers_from_comments_and_strings = 1	 "注释和字符串中的文字也会被收入补全
-let g:ycm_complete_in_strings=1
-let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_strings=1								 "在字符串是也能补全
+let g:ycm_complete_in_comments=1							 "在注释中也能补全
 let g:ycm_max_num_candidates = 15							"提示的数量
 let g:ycm_key_invoke_completion = '<A-.>'
 " let g:ycm_max_num_candidates_to_detail = 10
@@ -425,9 +423,9 @@ nnoremap <F5> :YcmCompleter GoToReferences<CR>
 
 " =================================coc.nvm settings====================================================
 let g:coc_data_home = '$VIM/coc'
-let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight']
-autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
-"
+" let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight']
+" autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
+" "
 " nmap	 <silent>		<F7>	  <Plug>(coc-rename)
 " nnoremap <silent><expr> <F9>	  get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
 " nnoremap <silent>		<F10>	  :silent CocRestart<cr>
@@ -438,20 +436,19 @@ autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
 " nmap	 <silent>		K		  :call CocAction("doHover")<cr>
 " nmap	 <silent>		<c-e>	  :<c-u>CocList diagnostics<cr>
 " " nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
-" "使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
+"使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
 " inoremap <silent><expr> <TAB>
-"	  \ pumvisible() ? coc#_select_confirm() :
-"	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"	  \ <SID>check_back_space() ? "\<TAB>" :
-"	  \ coc#refresh()
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 " function! s:check_back_space() abort
-"	  let col = col('.') - 1
-"	  return !col || getline('.')[col - 1]	=~# '\s'
+"       let col = col('.') - 1
+"       return !col || getline('.')[col - 1]	=~# '\s'
 " endfunction
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
 " let g:coc_snippet_next = '<tab>'"
 "
 
-" exec 'cd ' . fnameescape('F:\WorkCode\游戏组件\扎股子')
-exec 'cd ' . fnameescape('F:\WorkCodeMj\游戏组件\惠州庄麻将')
-"exec 'cd ' . fnameescape('C:\Test')
+" exec 'cd ' . fnameescape('F:\myCode\myQipai\QipaiServer')
+exec 'cd ' . fnameescape('C:\Test')
