@@ -292,7 +292,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	map <leader>9 :b 9<CR>
 " =================================a.vim ===================================================
 	nnoremap <A-o> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>		 ".h .cpp 切换
-	nnoremap <A-p> :CocCommand clangd.switchSourceHeader<CR>
+	" nnoremap <A-p> :CocCommand clangd.switchSourceHeader<CR>
 " =================================EasyMotion setting ======================================
 	" <leader><leader>w                       "从光标位置起，往前（往下）在单词之间移动光标
 	" <leader><leader>b                       "从光标位置起，往后（往上）在单词之间移动光标
@@ -380,6 +380,8 @@ let g:ycm_seed_identifiers_with_syntax = 1				" 语法关键字补全
 let g:ycm_collect_identifiers_from_tags_files= 1		" 开启 YCM 基于标签引擎
 let g:ycm_cache_omnifunc=0								" 禁止缓存匹配项，每次都重新生成匹配项
 let g:ycm_add_preview_to_completeopt = 0				" 关闭补全预览
+""补全之后自动关闭preview
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:ycm_goto_buffer_command = 'same-buffer' " 跳转打开
 let g:ycm_min_num_identifier_candidate_chars = 2

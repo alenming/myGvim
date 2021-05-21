@@ -10,6 +10,13 @@ hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=#66cc99 guifg=black
 第二行lineNr是设置行号区的色彩（同样bg是指背景色，fg是指前景色）。
 第三，四行是设置当前行的色彩，即光标所在行
 
+搜索或者替换后取消高亮的关键词
+搜索和替换后关键词会高亮显示，搜索结束后也不会消失，要取消高亮
+可以通过命令
+:noh
+另类方法：你可以搜索一个不存在字符的来让高亮取消
+/asdasdasd
+
 Nerdtree
 o		buffer打开	
 t 		tab打开 	
