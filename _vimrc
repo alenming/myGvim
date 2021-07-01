@@ -18,7 +18,7 @@ call plug#begin("$VIM\\vimfiles\\mingPlugin")
 " Plug 'eagle_ice/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'preservim/nerdcommenter'
-Plug 'vim-scripts/AuthorInfo'
+Plug 'dantezhu/authorinfo'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/a.vim'
