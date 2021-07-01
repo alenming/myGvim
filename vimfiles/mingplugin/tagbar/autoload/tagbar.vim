@@ -582,8 +582,6 @@ function! s:CreateAutocommands() abort
                 autocmd CursorHoldI * call
                         \ s:AutoUpdate(fnamemodify(expand('<afile>'), ':p'), 0)
             endif
-            autocmd BufDelete,BufWipeout *
-                        \ nested call s:HandleBufDelete(expand('<afile>'), expand('<abuf>'))
 
             " Suspend Tagbar while grep commands are running, since we don't want
             " to process files that only get loaded temporarily to search them
@@ -593,6 +591,15 @@ function! s:CreateAutocommands() abort
                         \ endif
 
             autocmd VimEnter * call s:CorrectFocusOnStartup()
+        endif
+    augroup END
+
+    " Separate these autocmds out from the others as we want to always perform
+    " these actions even if the tagbar window closes.
+    augroup TagbarCleanupAutoCmds
+        if !g:tagbar_no_autocmds
+            autocmd BufDelete,BufWipeout *
+                        \ nested call s:HandleBufDelete(expand('<afile>'), expand('<abuf>'))
         endif
     augroup END
 
@@ -1383,11 +1390,6 @@ function! s:ExecuteCtagsOnFile(fname, realfname, typeinfo) abort
             let ctags_args += [ '-V' ]
         endif
 
-        " Include extra type definitions
-        if has_key(a:typeinfo, 'deffile')
-            let ctags_args += ['--options=' . expand(a:typeinfo.deffile)]
-        endif
-
         " Third-party programs may not necessarily make use of this
         if has_key(a:typeinfo, 'ctagstype')
             let ctags_type = a:typeinfo.ctagstype
@@ -1401,6 +1403,12 @@ function! s:ExecuteCtagsOnFile(fname, realfname, typeinfo) abort
 
             let ctags_args += ['--language-force=' . ctags_type]
             let ctags_args += ['--' . ctags_type . '-kinds=' . ctags_kinds]
+        endif
+
+        " Include extra type definitions - include last to allow for any
+        " overrides
+        if has_key(a:typeinfo, 'deffile') && filereadable(expand(a:typeinfo.deffile))
+            let ctags_args += ['--options=' . expand(a:typeinfo.deffile)]
         endif
     endif
 
@@ -3463,12 +3471,12 @@ function! s:HandleBufDelete(bufname, bufnr) abort
         return
     endif
 
+    call s:known_files.rm(fnamemodify(a:bufname, ':p'))
+
     let tagbarwinnr = bufwinnr(s:TagbarBufName())
     if tagbarwinnr == -1 || a:bufname =~# '__Tagbar__.*'
         return
     endif
-
-    call s:known_files.rm(fnamemodify(a:bufname, ':p'))
 
     if !s:HasOpenFileWindows()
         if tabpagenr('$') == 1 && exists('t:tagbar_buf_name')

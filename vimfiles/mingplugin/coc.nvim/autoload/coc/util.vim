@@ -1,3 +1,4 @@
+scriptencoding utf-8
 let s:root = expand('<sfile>:h:h:h')
 let s:is_win = has('win32') || has('win64')
 let s:is_vim = !has('nvim')
@@ -98,7 +99,7 @@ function! coc#util#job_command()
     return
   endif
   if !filereadable(s:root.'/build/index.js')
-    echohl Error | echom '[coc.nvim] build/index.js not found, please compile the code by esbuild.' | echohl None
+    echohl Error | echom '[coc.nvim] build/index.js not found, please compile coc.nvim by: npm run build' | echohl None
     return
   endif
   return [node] + get(g:, 'coc_node_args', ['--no-warnings']) + [s:root.'/build/index.js']
