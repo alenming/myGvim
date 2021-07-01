@@ -2,26 +2,38 @@
 set nocompatible			  " be iMproved, required
 filetype off				  " required
 
-let g:plug_url_format = 'https://git::@hub.fastgit.org/%s.git'
-call plug#begin("$VIM\\vimfiles\\mingplugin")
+" let g:plug_url_format = 'https://gitee.com/%s.git'
+let g:plug_url_format = "https://git::@github.com.cnpmjs.org/%s"
+call plug#begin("$VIM\\vimfiles\\mingPlugin")
+
+" Plug 'yaozhijin/nerdcommenter'
+" Plug 'nxzxwxm/authorinfo'
+" Plug 'leeonky/vim-airline'
+" Plug 'tay3223/vim-airline-themes'
+" Plug 'abner_sheng/a.vim'
+" Plug 'dglxlcl/LeaderF'
+" Plug 'yaozhijin/tagbar'
+" Plug 'eagle_ice/rainbow_parentheses.vim'
+" Plug 'leeonky/vim-easymotion'
+" Plug 'eagle_ice/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'preservim/nerdcommenter'
-Plug 'dantezhu/authorinfo'
+Plug 'vim-scripts/AuthorInfo'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/a.vim'
 Plug 'Yggdroot/LeaderF'
 Plug 'preservim/tagbar'
 Plug 'kien/rainbow_parentheses.vim'
-" Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe'
+Plug 'preservim/nerdtree'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Plug 'honza/vim-snippets'
 " Plug 'kevinoid/vim-jsonc'
 " Plug 'vim-scripts/taglist.vim'
 " Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 filetype plugin indent on	 " required
@@ -189,7 +201,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " =================================LeaderF settings==================================
 	let g:Lf_DefaultMode = 'NameOnly'
 	let g:Lf_HideHelp = 1											"隐藏帮助提示
-	let g:Lf_ReverseOrder = 1										"搜索结果从下到上
+	let g:Lf_ReverseOrder = 0										"搜索结果从下到上
 	let g:Lf_PreviewInPopup = 0										"当前选择预览
 	let g:Lf_ShowRelativePath = 1
 	let g:Lf_StlSeparator = { 'left': '►', 'right': '◄', 'font': '' }
@@ -294,10 +306,10 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	nnoremap <A-o> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>		 ".h .cpp 切换
 	" nnoremap <A-p> :CocCommand clangd.switchSourceHeader<CR>
 " =================================EasyMotion setting ======================================
-	" <leader><leader>w                       "从光标位置起，往前（往下）在单词之间移动光标
-	" <leader><leader>b                       "从光标位置起，往后（往上）在单词之间移动光标
-	" <leader><leader>s                       "从光标位置起，同时往前往后，在单词之间移动光标
-	" <leader><leader>f｛char｝               "从光标位置起，往前（往下）在单个字符之间移动光标
+	" <leader><leader>w						  "从光标位置起，往前（往下）在单词之间移动光标
+	" <leader><leader>b						  "从光标位置起，往后（往上）在单词之间移动光标
+	" <leader><leader>s						  "从光标位置起，同时往前往后，在单词之间移动光标
+	" <leader><leader>f｛char｝				  "从光标位置起，往前（往下）在单个字符之间移动光标
 " =================================authoinfo 文件头模板==================================
 	nmap <F8> :AuthorInfoDetect<cr>
 	let g:vimrc_author='Alen'
@@ -380,7 +392,7 @@ let g:ycm_seed_identifiers_with_syntax = 1				" 语法关键字补全
 let g:ycm_collect_identifiers_from_tags_files= 1		" 开启 YCM 基于标签引擎
 let g:ycm_cache_omnifunc=0								" 禁止缓存匹配项，每次都重新生成匹配项
 let g:ycm_add_preview_to_completeopt = 0				" 关闭补全预览
-""补全之后自动关闭preview
+"补全之后自动关闭preview
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:ycm_goto_buffer_command = 'same-buffer' " 跳转打开
@@ -390,17 +402,18 @@ let g:ycm_min_num_of_chars_for_completion = 1					"触发补全字数
 let g:ycm_collect_identifiers_from_comments_and_strings = 1	 "注释和字符串中的文字也会被收入补全
 let g:ycm_complete_in_strings=1								 "在字符串是也能补全
 let g:ycm_complete_in_comments=1							 "在注释中也能补全
-let g:ycm_max_num_candidates = 15							"提示的数量
+let g:ycm_max_num_candidates = 5							"提示的数量
 let g:ycm_key_invoke_completion = '<A-.>'
-" let g:ycm_max_num_candidates_to_detail = 10
+let g:ycm_max_num_candidates_to_detail = 10
 let g:ycm_auto_hover = ' '								"把这货改一下,他才不会弹出那个预览
 
 " 关闭选择补全时上边弹出窗口
-" set completeopt=menu
+set completeopt=menu
 set completeopt=popup
 
 " 补全内容不以分割子窗口形式出现，只显示补全列表
-" set completeopt-=preview
+set completeopt-=preview
+
 
 let g:ycm_error_symbol = 'x'
 let g:ycm_warning_symbol = '!'
@@ -409,14 +422,14 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 
 
 let g:ycm_semantic_triggers =  {
-			  \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
-			  \ 'cs,lua,javascript': ['re!\w{1}'],
-			  \ }
+              \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+              \ 'cs,lua,javascript': ['re!\w{1}'],
+              \ }
 let g:ycm_filetype_whitelist = {
-			  \ "c":1,
-			  \ "cpp":1,
-			  \ "objc":1,
-			  \ }
+              \ "c":1,
+              \ "cpp":1,
+              \ "objc":1,
+              \ }
 " 导航定义和声明
 
 nnoremap <A-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -424,33 +437,33 @@ nnoremap <F5> :YcmCompleter GoToReferences<CR>
 
 
 " =================================coc.nvm settings====================================================
-let g:coc_data_home = '$VIM/coc'
-" let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight']
-" autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
+let g:coc_data_home = '$VIM/vimfiles/coc'
+"let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight']
+"autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
 " "
 " nmap	 <silent>		<F7>	  <Plug>(coc-rename)
 " nnoremap <silent><expr> <F9>	  get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
 " nnoremap <silent>		<F10>	  :silent CocRestart<cr>
-" nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
-" nmap	 <silent>		gy		  <Plug>(coc-type-definition)
-" nmap	 <silent>		gr		  <Plug>(coc-references-used)
-" nmap	 <silent>		gu		  <Plug>(coc-references)
+"nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
+"nmap	 <silent>		gy		  <Plug>(coc-type-definition)
+"nmap	 <silent>		gr		  <Plug>(coc-references-used)
+"nmap	 <silent>		gu		  <Plug>(coc-references)
 " nmap	 <silent>		K		  :call CocAction("doHover")<cr>
 " nmap	 <silent>		<c-e>	  :<c-u>CocList diagnostics<cr>
 " " nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
 "使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" function! s:check_back_space() abort
-"       let col = col('.') - 1
-"       return !col || getline('.')[col - 1]	=~# '\s'
-" endfunction
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
-" let g:coc_snippet_next = '<tab>'"
-"
+"inoremap <silent><expr> <TAB>
+"		\ pumvisible() ? coc#_select_confirm() :
+"		\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"		\ <SID>check_back_space() ? "\<TAB>" :
+"		\ coc#refresh()
+"function! s:check_back_space() abort
+"		let col = col('.') - 1
+"		return !col || getline('.')[col - 1]	=~# '\s'
+"endfunction
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
+"let g:coc_snippet_next = '<tab>'"
 
-" exec 'cd ' . fnameescape('F:\myCode\myQipai\QipaiServer')
+
+" exec 'cd ' . fnameescape('D:\code\my-qipai\QipaiServer')
 exec 'cd ' . fnameescape('C:\Test')
