@@ -1,3 +1,5 @@
 /.git/
 /.github/
 /.githooks/
+vimfiles/mingplugin/authorinfo/
+vimfiles/mingplugin/YouCompleteMe/third_party/ycmd/third_party/jedi_deps/jedi/jedi/third_party/django-stubs/
