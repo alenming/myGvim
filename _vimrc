@@ -27,7 +27,7 @@ Plug 'preservim/tagbar'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'honza/vim-snippets'
@@ -384,68 +384,68 @@ nnoremap <F3> <C-]>
 "跳回之前的位置"
 nnoremap <F4> <C-T>
 " =================================my setting====================================================
-let g:ycm_global_ycm_extra_conf =$VIM . '\vimfiles\mingplugin\YouCompleteMe\third_party\ycmd\.ycm_extra_conf.py'
-
-let g:ycm_confirm_extra_conf = 0						"0为关闭载入配置文件提示
-let g:ycm_show_diagnostics_ui = 0						"不做语法检查
-let g:ycm_seed_identifiers_with_syntax = 1				" 语法关键字补全
-let g:ycm_collect_identifiers_from_tags_files= 1		" 开启 YCM 基于标签引擎
-let g:ycm_cache_omnifunc=0								" 禁止缓存匹配项，每次都重新生成匹配项
-let g:ycm_add_preview_to_completeopt = 0				" 关闭补全预览
-"补全之后自动关闭preview
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-let g:ycm_goto_buffer_command = 'same-buffer' " 跳转打开
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_min_num_of_chars_for_completion = 1					"触发补全字数
-
-let g:ycm_collect_identifiers_from_comments_and_strings = 1	 "注释和字符串中的文字也会被收入补全
-let g:ycm_complete_in_strings=1								 "在字符串是也能补全
-let g:ycm_complete_in_comments=1							 "在注释中也能补全
-let g:ycm_max_num_candidates = 5							"提示的数量
-let g:ycm_key_invoke_completion = '<A-.>'
-let g:ycm_max_num_candidates_to_detail = 10
-let g:ycm_auto_hover = ' '								"把这货改一下,他才不会弹出那个预览
-
-" 关闭选择补全时上边弹出窗口
-set completeopt=menu
-set completeopt=popup
-
-" 补全内容不以分割子窗口形式出现，只显示补全列表
-set completeopt-=preview
-
-
-let g:ycm_error_symbol = 'x'
-let g:ycm_warning_symbol = '!'
-let g:ycm_key_list_select_completion=['<Tab>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-
-
-let g:ycm_semantic_triggers =  {
-              \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
-              \ 'cs,lua,javascript': ['re!\w{1}'],
-              \ }
-let g:ycm_filetype_whitelist = {
-              \ "c":1,
-              \ "cpp":1,
-              \ "objc":1,
-              \ }
-" 导航定义和声明
-
-nnoremap <A-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <F5> :YcmCompleter GoToReferences<CR>
+"let g:ycm_global_ycm_extra_conf =$VIM . '\vimfiles\mingplugin\YouCompleteMe\third_party\ycmd\.ycm_extra_conf.py'
+"
+"let g:ycm_confirm_extra_conf = 0						"0为关闭载入配置文件提示
+"let g:ycm_show_diagnostics_ui = 0						"不做语法检查
+"let g:ycm_seed_identifiers_with_syntax = 1				" 语法关键字补全
+"let g:ycm_collect_identifiers_from_tags_files= 1		" 开启 YCM 基于标签引擎
+"let g:ycm_cache_omnifunc=0								" 禁止缓存匹配项，每次都重新生成匹配项
+"let g:ycm_add_preview_to_completeopt = 0				" 关闭补全预览
+""补全之后自动关闭preview
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"
+"let g:ycm_goto_buffer_command = 'same-buffer' " 跳转打开
+"let g:ycm_min_num_identifier_candidate_chars = 2
+"let g:ycm_min_num_of_chars_for_completion = 1					"触发补全字数
+"
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1	 "注释和字符串中的文字也会被收入补全
+"let g:ycm_complete_in_strings=1								 "在字符串是也能补全
+"let g:ycm_complete_in_comments=1							 "在注释中也能补全
+"let g:ycm_max_num_candidates = 5							"提示的数量
+"let g:ycm_key_invoke_completion = '<A-.>'
+"let g:ycm_max_num_candidates_to_detail = 10
+"let g:ycm_auto_hover = ' '								"把这货改一下,他才不会弹出那个预览
+"
+"" 关闭选择补全时上边弹出窗口
+"set completeopt=menu
+"set completeopt=popup
+"
+"" 补全内容不以分割子窗口形式出现，只显示补全列表
+"set completeopt-=preview
+"
+"
+"let g:ycm_error_symbol = 'x'
+"let g:ycm_warning_symbol = '!'
+"let g:ycm_key_list_select_completion=['<Tab>']
+"let g:ycm_key_list_previous_completion = ['<Up>']
+"
+"
+"let g:ycm_semantic_triggers =	{
+"			   \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+"			   \ 'cs,lua,javascript': ['re!\w{1}'],
+"			   \ }
+"let g:ycm_filetype_whitelist = {
+"			   \ "c":1,
+"			   \ "cpp":1,
+"			   \ "objc":1,
+"			   \ }
+"" 导航定义和声明
+"
+"nnoremap <A-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <F5> :YcmCompleter GoToReferences<CR>
 
 
 " =================================coc.nvm settings====================================================
 let g:coc_data_home = '$VIM/vimfiles/coc'
-"let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight']
+" let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight', 'coc-python']
 "autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
 " "
 " nmap	 <silent>		<F7>	  <Plug>(coc-rename)
 " nnoremap <silent><expr> <F9>	  get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
 " nnoremap <silent>		<F10>	  :silent CocRestart<cr>
-"nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
-"nmap	 <silent>		gy		  <Plug>(coc-type-definition)
+nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
+nmap	 <silent>		gy		  <Plug>(coc-type-definition)
 "nmap	 <silent>		gr		  <Plug>(coc-references-used)
 "nmap	 <silent>		gu		  <Plug>(coc-references)
 " nmap	 <silent>		K		  :call CocAction("doHover")<cr>
@@ -466,4 +466,5 @@ let g:coc_data_home = '$VIM/vimfiles/coc'
 
 
 " exec 'cd ' . fnameescape('D:\code\my-qipai\QipaiServer')
-exec 'cd ' . fnameescape('C:\Test')
+" exec 'cd ' . fnameescape('C:\myPy')
+exec 'cd ' . fnameescape('F:\myCode\myPy')
