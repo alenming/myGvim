@@ -439,30 +439,30 @@ nnoremap <F4> <C-T>
 " =================================coc.nvm settings====================================================
 let g:coc_data_home = '$VIM/vimfiles/coc'
 " let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-highlight', 'coc-python']
-"autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
+autocmd FileType cpp let b:coc_root_patterns = ['.git', '.env', '.vim']
 " "
-" nmap	 <silent>		<F7>	  <Plug>(coc-rename)
+nmap	 <silent>		<F7>	  <Plug>(coc-rename)
 " nnoremap <silent><expr> <F9>	  get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
-" nnoremap <silent>		<F10>	  :silent CocRestart<cr>
+nnoremap <silent>		<F10>	  :silent CocRestart<cr>
 nmap	 <silent>		<A-g>	  <Plug>(coc-definition)
 nmap	 <silent>		gy		  <Plug>(coc-type-definition)
 "nmap	 <silent>		gr		  <Plug>(coc-references-used)
-"nmap	 <silent>		gu		  <Plug>(coc-references)
+nmap	 <silent>		gu		  <Plug>(coc-references)
 " nmap	 <silent>		K		  :call CocAction("doHover")<cr>
 " nmap	 <silent>		<c-e>	  :<c-u>CocList diagnostics<cr>
 " " nnoremap <silent>		  <F9>		:CocCommand snippets.editSnippets<cr>
 "使用tab选择补全? tab自动补全第一个,ctrl+np上下选择
-"inoremap <silent><expr> <TAB>
-"		\ pumvisible() ? coc#_select_confirm() :
-"		\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"		\ <SID>check_back_space() ? "\<TAB>" :
-"		\ coc#refresh()
-"function! s:check_back_space() abort
-"		let col = col('.') - 1
-"		return !col || getline('.')[col - 1]	=~# '\s'
-"endfunction
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
-"let g:coc_snippet_next = '<tab>'"
+inoremap <silent><expr> <TAB>
+		\ pumvisible() ? coc#_select_confirm() :
+		\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ coc#refresh()
+function! s:check_back_space() abort
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]	=~# '\s'
+endfunction
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"
+let g:coc_snippet_next = '<tab>'"
 
 
 " exec 'cd ' . fnameescape('D:\code\my-qipai\QipaiServer')
