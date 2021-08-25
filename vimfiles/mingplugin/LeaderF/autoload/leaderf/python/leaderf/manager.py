@@ -330,6 +330,8 @@ class Manager(object):
         self._resetHighlights()
         if self._cli.pattern and self._index == 0:
             self._search(self._content)
+            if len(self._getInstance().buffer) < len(self._result_content):
+                self._getInstance().appendBuffer(self._result_content[self._initial_count:])
 
     def _bangReadFinished(self):
         if self._preview_open == False and self._getInstance().getWinPos() in ('popup', 'floatwin'):
@@ -451,7 +453,7 @@ class Manager(object):
                 buffer_len = len(vim.buffers[source])
             else:
                 try:
-                    lfCmd("let content = readfile('%s')" % escQuote(source))
+                    lfCmd("let content = readfile('%s', '', 1000)" % escQuote(source))
                 except vim.error as e:
                     lfPrintError(e)
                     return
@@ -507,6 +509,7 @@ class Manager(object):
                 self._preview_winid = int(lfEval("nvim_open_win(%d, 0, %s)" % (source, str(config))))
             else:
                 self._preview_winid = int(lfEval("nvim_open_win(scratch_buffer, 0, %s)" % str(config)))
+            lfCmd("let g:Lf_PreviewWindowID[%d] = %d" % (id(self), self._preview_winid))
 
             if jump_cmd:
                 cur_winid = lfEval("win_getid()")
@@ -546,7 +549,7 @@ class Manager(object):
                 buffer_len = len(vim.buffers[source])
             else:
                 try:
-                    lfCmd("let content = readfile('%s')" % escQuote(source))
+                    lfCmd("let content = readfile('%s', '', 1000)" % escQuote(source))
                 except vim.error as e:
                     lfPrintError(e)
                     return
@@ -676,7 +679,7 @@ class Manager(object):
                 buffer_len = len(vim.buffers[source])
             else:
                 try:
-                    lfCmd("let content = readfile('%s')" % escQuote(source))
+                    lfCmd("let content = readfile('%s', '', 1000)" % escQuote(source))
                 except vim.error as e:
                     lfPrintError(e)
                     return
@@ -783,7 +786,7 @@ class Manager(object):
                 lfCmd("silent! let winid = popup_create(%d, %s)" % (source, json.dumps(options)))
             else:
                 try:
-                    lfCmd("let content = readfile('%s')" % escQuote(source))
+                    lfCmd("let content = readfile('%s', '', 1000)" % escQuote(source))
                 except vim.error as e:
                     lfPrintError(e)
                     return
@@ -1069,6 +1072,7 @@ class Manager(object):
                 self._getInstance().setBuffer(content[:self._initial_count])
                 self._getInstance().setStlResultsCount(len(content), True)
                 self._result_content = []
+            self._previewResult(False)
             return
 
         if self._cli.isFuzzy:

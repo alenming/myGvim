@@ -23,7 +23,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/a.vim'
 Plug 'Yggdroot/LeaderF'
-Plug 'preservim/tagbar'
+"Plug 'preservim/tagbar'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
@@ -32,13 +32,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'honza/vim-snippets'
 " Plug 'kevinoid/vim-jsonc'
-" Plug 'vim-scripts/taglist.vim'
 " Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 
 call plug#end()
 filetype plugin indent on	 " required
 " ================================= 设置插件 ==================================
 " "保存时自动删除行尾空格,要用大写W,小写无效
+"
 func! DeleteTrailingWS()
 	%ret! 4
 	exe "normal mz"
@@ -51,7 +51,8 @@ command W call DeleteTrailingWS()
 set encoding=utf-8
 set fileencodings=utf-8,gbk			"使用utf-8或gbk打开文件新建文件
 let &termencoding=&encoding
-set helplang=cn						"帮助系统设置为中文
+set helplang=cn						"帮助系统设置为中文o
+
 set langmenu=zh_CN.UTF-8			"设置菜单语言
 source $VIMRUNTIME/delmenu.vim		"导入删除菜单脚本，删除乱码的菜单
 source $VIMRUNTIME/menu.vim			"导入正常的菜单脚本
@@ -148,6 +149,7 @@ autocmd BufReadPost *
 " VIM关闭再打开时自动打开上次关闭已经打开着的buffer
 set viminfo='10,\"100,:20,%,n~/.viminfo
 " autocmd FileType json syntax match Comment +\/\/.\+$+
+
 " =================================TagHighlight==================================
 	"全局变量吧"
 	hi CTagsGlobalVariable gui=NONE guifg=#BDB76B
@@ -174,11 +176,11 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 	au Syntax * RainbowParenthesesLoadSquare
 	au Syntax * RainbowParenthesesLoadBraces
 " =================================Tagbar==================================
-	nmap <F2> :TagbarToggle<CR>
-	let g:tagbar_width = 40
-	let g:tagbar_ctags_bin = 'ctags'							" tagbar 依赖 ctags 插件
-	let g:tagbar_sort = 0										" close the sort
-	let g:tagbar_autofocus = 1									" 这是tagbar打开光标在tagbar页面内
+	"nmap <F2> :TagbarToggle<CR>
+	"let g:tagbar_width = 40
+	"let g:tagbar_ctags_bin = 'ctags'							" tagbar 依赖 ctags 插件
+	"let g:tagbar_sort = 0										" close the sort
+	"let g:tagbar_autofocus = 1									" 这是tagbar打开光标在tagbar页面内
 " =================================Tlist================================================
 	" \tl				  打开Taglist/TxtBrowser窗口，在右侧栏显示
 	" nmap <leader>tl :Tlist<CR><c-l>
@@ -465,6 +467,5 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "<C-g>u<CR><c
 let g:coc_snippet_next = '<tab>'"
 
 
-" exec 'cd ' . fnameescape('D:\code\my-qipai\QipaiServer')
-" exec 'cd ' . fnameescape('C:\myPy')
-exec 'cd ' . fnameescape('F:\myCode\myPy')
+
+exec 'cd ' . fnameescape('E:\myCode\my-py')

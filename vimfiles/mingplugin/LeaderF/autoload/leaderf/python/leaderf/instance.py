@@ -534,10 +534,10 @@ class LfInstance(object):
                 self.refreshPopupStatusline()
 
             lfCmd("augroup Lf_Floatwin_Close")
-            lfCmd("autocmd! WinEnter * call leaderf#closeAllFloatwin(%d, %d, %d, %d)" % (self._popup_instance.input_win.id,
+            lfCmd("autocmd! WinEnter * call leaderf#closeAllFloatwin(%d, %d, %d, %d, %d)" % (self._popup_instance.input_win.id,
                                                                                          self._popup_instance.content_win.id,
                                                                                          self._popup_instance.statusline_win.id if show_stl else -1,
-                                                                                         show_stl))
+                                                                                         show_stl, id(self._manager)))
             lfCmd("augroup END")
         else:
             self._win_pos = "popup"
@@ -1349,7 +1349,7 @@ class LfInstance(object):
 
     @property
     def currentLine(self):
-        if self._win_pos == 'popup':
+        if self._win_pos in ('popup', 'floatwin'):
             return self._buffer_object[self._window_object.cursor[0] - 1]
         else:
             return vim.current.line if self._buffer_object == vim.current.buffer else None
